@@ -45,7 +45,9 @@ class InsuranceInput(BaseModel):
 # def home():
 #     return {"message": "Insurance Charges Prediction API is running."}
 
-
+@app.get("/")
+def read_root():
+    return {"msg": "We Are Live!!!"}
 @app.post("/predict")
 def predict(data: InsuranceInput):
     try:
