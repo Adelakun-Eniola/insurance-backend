@@ -6,6 +6,7 @@ import pandas as pd
 import joblib
 import json
 import os
+import uvicorn
 
 
 app = FastAPI()
@@ -61,3 +62,8 @@ def predict(data: InsuranceInput):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Prediction failed: {e}")
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
